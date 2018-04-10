@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{3256B9EF-B824-43E2-8E66-78EA3BEE902C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5C2DB395-F1B3-4CFA-8DA7-3CCE296864F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3256B9EF-B824-43E2-8E66-78EA3BEE902C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3256B9EF-B824-43E2-8E66-78EA3BEE902C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3256B9EF-B824-43E2-8E66-78EA3BEE902C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3256B9EF-B824-43E2-8E66-78EA3BEE902C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C2DB395-F1B3-4CFA-8DA7-3CCE296864F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C2DB395-F1B3-4CFA-8DA7-3CCE296864F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C2DB395-F1B3-4CFA-8DA7-3CCE296864F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C2DB395-F1B3-4CFA-8DA7-3CCE296864F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {665AEAB6-2D87-4EEE-B3AB-FF7B55248AE4}
+	EndGlobalSection
+EndGlobal

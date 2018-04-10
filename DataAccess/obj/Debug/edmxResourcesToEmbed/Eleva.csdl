@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="elevaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Turma">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IDEscola" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Escola" Relationship="elevaModel.FK_Turma_Escola" FromRole="Turma" ToRole="Escola" />
+  </EntityType>
+  <EntityContainer Name="elevaEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Turma" EntityType="Self.Turma" />
+    <EntitySet Name="Escola" EntityType="elevaModel.Escola" />
+    <AssociationSet Name="FK_Turma_Escola" Association="elevaModel.FK_Turma_Escola">
+      <End Role="Escola" EntitySet="Escola" />
+      <End Role="Turma" EntitySet="Turma" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Escola">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Endereco" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Turma" Relationship="elevaModel.FK_Turma_Escola" FromRole="Escola" ToRole="Turma" />
+  </EntityType>
+  <Association Name="FK_Turma_Escola">
+    <End Type="elevaModel.Escola" Role="Escola" Multiplicity="1" />
+    <End Type="elevaModel.Turma" Role="Turma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escola">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Turma">
+        <PropertyRef Name="IDEscola" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

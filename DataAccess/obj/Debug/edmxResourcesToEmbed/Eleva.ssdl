@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="elevaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Escola">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar(max)" Nullable="false" />
+    <Property Name="Endereco" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Turma">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="IDEscola" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Turma_Escola">
+    <End Role="Escola" Type="Self.Escola" Multiplicity="1" />
+    <End Role="Turma" Type="Self.Turma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Escola">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Turma">
+        <PropertyRef Name="IDEscola" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="elevaModelStoreContainer">
+    <EntitySet Name="Escola" EntityType="Self.Escola" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turma" EntityType="Self.Turma" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Turma_Escola" Association="Self.FK_Turma_Escola">
+      <End Role="Escola" EntitySet="Escola" />
+      <End Role="Turma" EntitySet="Turma" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
