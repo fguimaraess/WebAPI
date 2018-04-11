@@ -86,10 +86,16 @@ namespace WebApi.Controllers
         {
             using (var DAL = new elevaEntities())
             {
-                var Model = DAL.Escola.Where(x => x.ID == id).FirstOrDefault();
+                var Model = DAL.Escola.Where(x => x.ID == id).Include("Turma").FirstOrDefault();
                 if(Model == null)
                 {
                     return NotFound();
+                }
+
+                var Turmas = Model.Turma.ToList();
+                foreach (var item in Turmas)
+                {
+                    DAL.Entry(item).State = EntityState.Deleted;
                 }
 
                 DAL.Entry(Model).State = EntityState.Deleted;
