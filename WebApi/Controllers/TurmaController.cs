@@ -10,9 +10,9 @@ using System.Web.Http.Cors;
 
 namespace WebApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class TurmaController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<Turma> Get()
         {
             using (elevaEntities DAL = new elevaEntities())
@@ -22,7 +22,6 @@ namespace WebApi.Controllers
             }
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Turma Get(int id)
         {
             using (var DAL = new elevaEntities())
@@ -33,7 +32,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpPost]
+        [HttpPost]
         public IHttpActionResult Create([FromBody] Turma turma)
         {
             if (turma == null)
@@ -55,7 +54,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpPut]
+        [HttpPut]
         public IHttpActionResult Update(long id, [FromBody] Turma turma)
         {
             if (turma == null || turma.ID != id)
@@ -86,7 +85,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpDelete]
+        [HttpDelete]
         public IHttpActionResult Delete(long id)
         {
             using (var DAL = new elevaEntities())

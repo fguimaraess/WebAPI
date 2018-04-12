@@ -11,9 +11,9 @@ using Newtonsoft.Json;
 
 namespace WebApi.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class EscolaController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IEnumerable<Escola> Get()
         {
             using (elevaEntities DAL = new elevaEntities())
@@ -23,7 +23,6 @@ namespace WebApi.Controllers
             }
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public Escola Get(int id)
         {
             using(var DAL = new elevaEntities())
@@ -34,7 +33,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpPost]
+        [HttpPost]
         public IHttpActionResult Create([FromBody] Escola escola)
         {
             //var Model = JsonConvert.DeserializeObject<Escola>(escola);
@@ -54,7 +53,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpPut]
+        [HttpPut]
         public IHttpActionResult Update(long id, [FromBody] Escola escola)
         {
             if (escola == null || escola.ID != id)
@@ -81,7 +80,7 @@ namespace WebApi.Controllers
             return Ok();
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*"), HttpDelete]
+        [HttpDelete]
         public IHttpActionResult Delete(long id)
         {
             using (var DAL = new elevaEntities())
